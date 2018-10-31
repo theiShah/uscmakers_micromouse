@@ -1,4 +1,5 @@
 import Tkinter as tk
+import config
 
 class Neighbors:
 
@@ -39,8 +40,8 @@ class Square:
 
 class Maze:
 
-    wall_length = 110
-    line_width = 4
+    wall_length = config.wall_length
+    line_width = config.wall_thickness
     start_square = None
 
     file_symbols = {
@@ -121,17 +122,12 @@ class Maze:
                 current_square = self.squares[i][j]
                 if current_square.neighbors.top:
                     current_square.neighbors.top = self.squares[i-1][j]
-                    #print("Top linked ({}, {}) to ({}, {})".format(i, j, i-1, j))
                 if current_square.neighbors.left:
                     current_square.neighbors.left = self.squares[i][j-1]
-                    #print("Left linked ({}, {}) to ({}, {})".format(i, j, i, j-1))
                 if current_square.neighbors.bottom:
                     current_square.neighbors.bottom = self.squares[i+1][j]
-                    #print("Bottom linked ({}, {}) to ({}, {})".format(i, j, i+1, j))
                 if current_square.neighbors.right:
                     current_square.neighbors.right = self.squares[i][j+1]
-                    #print("Right linked ({}, {}) to ({}, {})".format(i, j, i, j+1))
-
 
     def draw_maze(self, gui):
 

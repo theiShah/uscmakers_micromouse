@@ -2,6 +2,7 @@ from Maze import Maze
 from Robot import Robot
 import Tkinter as tk
 import time, sys, importlib
+import config
 
 def main():
     global robot
@@ -11,7 +12,7 @@ def main():
 
     gui = tk.Tk()
     maze = Maze()
-    maze.process_file("input.txt")
+    maze.process_file(config.input_file)
     canvas = maze.draw_maze(gui)
     robot = Robot(maze, gui, canvas)
 
@@ -23,9 +24,10 @@ def main():
     algorithm.init()
     while not robot.current_square.end:
         algorithm.periodic()
+        time.sleep(config.periodic_wait * config.sim_speed)
     end_time = time.time()
 
-    print("Succeeded in {} seconds!".format(end_time-start_time))
+    print("Succeeded in {} seconds!".format((end_time-start_time)/config.sim_speed))
     tk.mainloop()
 
 if __name__ == "__main__":

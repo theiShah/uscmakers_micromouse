@@ -1,4 +1,5 @@
 import math, time
+import config
 
 def bound_angle(angle):
     angle %= 360
@@ -46,10 +47,10 @@ class RobotGraphic:
             direction *= -1
             angle_delta -= 180
 
-        for i in range(0, angle_delta):
+        for i in range(0, angle_delta)[::2]:
             self.go_to_angle(start_angle + direction * i)
             self.gui.update()
-            time.sleep(.01)
+            time.sleep(.002 * config.turn_rate * config.sim_speed)
         self.go_to_angle(angle)
         self.gui.update()
 
@@ -69,10 +70,10 @@ class RobotGraphic:
         x_step = x_delta/h
         y_step = y_delta/h
 
-        for i in range(0, int(h)):
+        for i in range(0, int(h))[::2]:
             self.go_to_point(x_start + x_step * i, y_start + y_step * i)
             self.gui.update()
-            time.sleep(.01)
+            time.sleep(.002 * config.move_rate * config.sim_speed)
         self.go_to_point(x, y)
         self.gui.update()
 
@@ -108,17 +109,17 @@ class Robot:
             raise RuntimeError("Drove into a wall!!")
 
         self.robot_graphic.move_to_point(self.current_square.x_mid, self.current_square.y_mid)
-        time.sleep(0.25)
+        time.sleep(config.move_wait * config.sim_speed)
 
     def turn_right(self):
         self.current_angle = bound_angle(self.current_angle - 90)
         self.robot_graphic.rotate_to_angle(self.current_angle)
-        time.sleep(0.25)
+        time.sleep(config.turn_wait * config.sim_speed)
 
     def turn_left(self):
         self.current_angle = bound_angle(self.current_angle + 90)
         self.robot_graphic.rotate_to_angle(self.current_angle)
-        time.sleep(0.25)
+        time.sleep(config.turn_wait * config.sim_speed)
 
     def get_front(self):
         if self.__pointing_up():
