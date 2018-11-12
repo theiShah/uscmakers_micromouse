@@ -1,8 +1,8 @@
-from Maze import Maze
-from Robot import Robot
 import Tkinter as tk
 import time, sys, importlib
 import config
+from sim.Maze import Maze
+from sim.Robot import Robot
 
 def main():
     global robot

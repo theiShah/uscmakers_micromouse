@@ -50,7 +50,7 @@ class RobotGraphic:
         for i in range(0, angle_delta)[::2]:
             self.go_to_angle(start_angle + direction * i)
             self.gui.update()
-            time.sleep(.002 * config.turn_rate * config.sim_speed)
+            time.sleep(.001 * config.turn_rate * config.sim_speed)
         self.go_to_angle(angle)
         self.gui.update()
 
@@ -73,7 +73,7 @@ class RobotGraphic:
         for i in range(0, int(h))[::2]:
             self.go_to_point(x_start + x_step * i, y_start + y_step * i)
             self.gui.update()
-            time.sleep(.002 * config.move_rate * config.sim_speed)
+            time.sleep(.001 * config.move_rate * config.sim_speed)
         self.go_to_point(x, y)
         self.gui.update()
 
