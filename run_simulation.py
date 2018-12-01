@@ -9,12 +9,14 @@ def main():
 
     if len(sys.argv) != 2:
         print("This program must have 1 argument!")
+        sys.exit()
 
     gui = tk.Tk()
     maze = Maze()
     maze.process_file(config.input_file)
     canvas = maze.draw_maze(gui)
     robot = Robot(maze, gui, canvas)
+
 
     algorithm_file = sys.argv[1]
     algorithm = importlib.import_module(algorithm_file.replace(".py", ""))

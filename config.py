@@ -1,6 +1,6 @@
-input_file = "./input/input16x16.txt"
-wall_length = 50
-wall_thickness = 3
+input_file = "./input/full16x16.txt"
+wall_length = 45
+wall_thickness = 4
 periodic_wait = 0
 
 move_wait = 0.25
