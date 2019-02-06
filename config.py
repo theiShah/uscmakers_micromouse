@@ -8,4 +8,4 @@ move_rate = 10
 turn_wait = 0.25
 turn_rate = 10
 
-sim_speed = 1.0
+sim_speed = 0.01

@@ -77,7 +77,7 @@ class RobotGraphic:
         self.go_to_point(x, y)
         self.gui.update()
 
-class Robot:
+class RobotSim:
 
     def __init__(self, maze, gui, canvas):
         self.current_square = maze.start_square

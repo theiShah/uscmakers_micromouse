@@ -2,7 +2,7 @@ import Tkinter as tk
 import time, sys, importlib
 import config
 from sim.Maze import Maze
-from sim.Robot import Robot
+from sim.RobotSim import RobotSim
 
 def main():
     global robot
@@ -15,7 +15,7 @@ def main():
     maze = Maze()
     maze.process_file(config.input_file)
     canvas = maze.draw_maze(gui)
-    robot = Robot(maze, gui, canvas)
+    robot = RobotSim(maze, gui, canvas)
 
 
     algorithm_file = sys.argv[1]
