@@ -34,7 +34,9 @@ def main():
     algorithm.init()
     while not robot.current_square.end:
         algorithm.periodic()
-        time.sleep(config.periodic_wait * config.sim_speed)
+        wait_time_start = time.time()
+        while time.time() - wait_time_start < config.periodic_wait * config.sim_speed:
+            pass
     end_time = time.time()
 
     print("Succeeded in {} seconds!".format((end_time-start_time)/config.sim_speed))

@@ -82,6 +82,7 @@ def search(robot):
 	backtrace_directions = Stack()
 
 	current_square = create_current_square(robot)
+	current_square.neighbors.bottom = False
 	add_moves(robot, to_be_explored, maze)
 	maze.add_square(current_square, robot.x, robot.y)
 
@@ -107,6 +108,10 @@ def search(robot):
 		current_square = create_current_square(robot)
 		add_moves(robot, to_be_explored, maze)
 		maze.add_square(current_square, robot.x, robot.y)
+
+	maze.link_squares()
+
+	return maze
 		
 
 

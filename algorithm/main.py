@@ -6,7 +6,7 @@ robot = None
 def init():
     robot_wrap = Robot(robot)
 
-    search(robot_wrap)
+    maze = search(robot_wrap)
 
 def periodic():
     pass

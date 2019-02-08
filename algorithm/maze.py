@@ -22,19 +22,25 @@ class Maze:
 
     def __init__(self):
         self.squares = {}
+        self.max_x = 0
+        self.max_y = 0
 
     def add_square(self, square, x, y):
+        if self.max_y < y:
+            self.max_y = y
+        if self.max_x < x:
+            self.max_x = x
         self.squares[(x, y)] = square
 
     def link_squares(self):
-        for i in range(0, self.size):
-            for j in range(0, self.size):
+        for i in range(0, self.max_x):
+            for j in range(0, self.max_y):
                 current_square = self.squares[(i, j)]
                 if current_square.neighbors.top:
-                    current_square.neighbors.top = self.squares[(i-1, j)]
+                    current_square.neighbors.top = self.squares[(i, j+1)]
                 if current_square.neighbors.left:
-                    current_square.neighbors.left = self.squares[(i, j-1)]
+                    current_square.neighbors.left = self.squares[(i-1, j)]
                 if current_square.neighbors.bottom:
-                    current_square.neighbors.bottom = self.squares[(i+1, j)]
+                    current_square.neighbors.bottom = self.squares[(i, j-1)]
                 if current_square.neighbors.right:
-                    current_square.neighbors.right = self.squares[(i, j+1)]
+                    current_square.neighbors.right = self.squares[(i+1, j)]
