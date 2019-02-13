@@ -1,4 +1,4 @@
-import Tkinter as tk
+import tkinter as tk
 import time, sys, importlib
 import config
 from sim.Maze import Maze
@@ -30,17 +30,22 @@ def main():
     algorithm = importlib.import_module(file_name.replace(".py", ""))
     algorithm.robot = robot
 
-    start_time = time.time()
+    #start_time = time.time()
     algorithm.init()
-    while not robot.current_square.end:
-        algorithm.periodic()
-        wait_time_start = time.time()
-        while time.time() - wait_time_start < config.periodic_wait * config.sim_speed:
-            pass
-    end_time = time.time()
+    if config.use_periodic:
+        while not robot.current_square.end:
+            algorithm.periodic()
+            wait_time_start = time.time()
+            while time.time() - wait_time_start < config.periodic_wait * config.sim_speed:
+                pass
+    #end_time = time.time()
 
-    print("Succeeded in {} seconds!".format((end_time-start_time)/config.sim_speed))
-    tk.mainloop()
+    #print("Succeeded in {} seconds!".format(end_time-start_time))
+    print('Simultation Complete!')
+    try:
+        tk.mainloop()
+    except AttributeError:
+        pass
 
 if __name__ == "__main__":
     main()

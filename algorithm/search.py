@@ -40,7 +40,7 @@ def add_move(move, stack, maze):
 	if (move.x, move.y) in maze.squares:
 		return False
 	else:
-		print('Adding move from ({}, {}) to ({}, {})'.format(move.parent_x, move.parent_y, move.x, move.y))
+		#print('Adding move from ({}, {}) to ({}, {})'.format(move.parent_x, move.parent_y, move.x, move.y))
 		stack.add(move)
 		return True
 
@@ -86,9 +86,7 @@ def search(robot):
 	add_moves(robot, to_be_explored, maze)
 	maze.add_square(current_square, robot.x, robot.y)
 
-	first_time = True
-	while to_be_explored.size() > 0 or first_time:
-		first_time = False
+	while to_be_explored.size() > 0:
 
 		current_move = to_be_explored.pop()
 

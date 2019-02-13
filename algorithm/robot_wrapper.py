@@ -19,17 +19,17 @@ class Robot:
         start_y = self.y
         self.x = start_x + (self.direction % 2) * (self.direction - 2)
         self.y = start_y + ((self.direction % 2)-1) * (self.direction - 1)
-        print('Moving from ({}, {}) to ({}, {}) in direction {}'.format(start_x, start_y, self.x, self.y, self.direction))
+        #print('Moving from ({}, {}) to ({}, {}) in direction {}'.format(start_x, start_y, self.x, self.y, self.direction))
         self.robot.move_forward()
 
     def turn_right(self):
         self.direction = (self.direction + 3) % 4
-        print('Turning right to direction {}'.format(self.direction))
+        #print('Turning right to direction {}'.format(self.direction))
         self.robot.turn_right()
 
     def turn_left(self):
         self.direction = (self.direction + 1) % 4
-        print('Turning left to direction {}'.format(self.direction))
+        #print('Turning left to direction {}'.format(self.direction))
         self.robot.turn_left()
 
     def get_front(self):
@@ -56,7 +56,7 @@ class Robot:
         if abs(difference) == 3:
             difference = difference/3 * -1
         
-        for i in range(abs(difference)):
+        for i in range(abs(int(difference))):
             if difference > 0:
                 self.turn_left()
             else:
