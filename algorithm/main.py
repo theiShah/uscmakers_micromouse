@@ -13,7 +13,8 @@ def init():
 
     path = dijkstra(maze.graph, (0,0), (8,8))
 
-    print(path)
+    for node in path:
+    	print(node)
 
     maze.draw_graph()
 
