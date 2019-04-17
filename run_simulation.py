@@ -28,19 +28,18 @@ def main():
     sys.path.append(file_directories)
 
     algorithm = importlib.import_module(file_name.replace(".py", ""))
-    algorithm.robot = robot
 
-    #start_time = time.time()
-    algorithm.init()
+    start_time = time.time()
+    algorithm.init(robot)
     if config.use_periodic:
         while not robot.current_square.end:
             algorithm.periodic()
             wait_time_start = time.time()
             while time.time() - wait_time_start < config.periodic_wait * config.sim_speed:
                 pass
-    #end_time = time.time()
+    end_time = time.time()
 
-    #print("Succeeded in {} seconds!".format(end_time-start_time))
+    print("Succeeded in {} seconds!".format(end_time-start_time))
     print('Simultation Complete!')
     try:
         tk.mainloop()

@@ -3,22 +3,23 @@ from robot_wrapper import Robot
 import matplotlib.pyplot as plt
 import networkx.drawing as nd
 from dijkstras import dijkstra
+from path_following import follow_path
+import config
 
-robot = None
+def init(robot):
+	robot_wrap = Robot(robot)
 
-def init():
-    robot_wrap = Robot(robot)
+	maze = search(robot_wrap)
+	#maze.draw_graph()
 
-    maze = search(robot_wrap)
+	path = dijkstra(maze.graph, (robot_wrap.x, robot_wrap.y), (0,0))
 
-    path = dijkstra(maze.graph, (0,0), (8,8))
+	follow_path(robot_wrap, path)
 
-    for node in path:
-    	print(node)
+	path = dijkstra(maze.graph, (0,0), (8,7))
+	# for node in path:
+	# 	print(node)
 
-    maze.draw_graph()
+	config.sim_speed = 0.75  
 
-
-#run dijkstra's, find best path, run through that path
-def periodic():
-    pass
+	follow_path(robot_wrap, path)
