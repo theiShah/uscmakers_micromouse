@@ -1,4 +1,6 @@
 
+import driver_config
+
 class InfraredSensor():
 
 	def __init__(self, channel, adc):
@@ -6,4 +8,7 @@ class InfraredSensor():
 		self.channel = channel
 
 	def getDistance(self):
-		return -1
+
+		raw_value = self.adc.read_adc(self.channel)
+
+		return raw_value * driver_config.infraredConversionFactor
