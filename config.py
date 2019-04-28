@@ -1,3 +1,6 @@
+simulated = True
+algorithm = "./algorithm/main.py"
+
 input_file = "./input/full16x16.txt"
 wall_length = 45
 wall_thickness = 4

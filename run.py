@@ -3,24 +3,32 @@ import time, sys, importlib
 import config
 from sim.Maze import Maze
 from sim.Robot import RobotSim
+from drivers.Robot import Robot
 
 def main():
     global robot
 
-    if len(sys.argv) != 2:
-        print("This program must have 1 argument!")
-        sys.exit()
+    # if len(sys.argv) != 2:
+    #     print("This program must have 1 argument!")
+    #     sys.exit()
 
-    gui = tk.Tk()
     maze = Maze()
     maze.process_file(config.input_file)
-    canvas = maze.draw_maze(gui)
-    robot = RobotSim(maze, gui, canvas)
 
-    algorithm_file = sys.argv[1]
+    if config.simulated:
+        gui = tk.Tk()
+        canvas = maze.draw_maze(gui)
+        robot = RobotSim(maze, gui, canvas)
+    else:
+        robot = Robot()
 
-    if algorithm_file[0] != '.' and algorithm_file[0] != '/':
-        algorithm_file = './' + algorithm_file
+
+    # algorithm_file = sys.argv[1]
+
+    # if algorithm_file[0] != '.' and algorithm_file[0] != '/':
+    #     algorithm_file = './' + algorithm_file
+
+    algorithm_file = config.algorithm
 
     filename_index = algorithm_file.rfind('/')
     file_directories = algorithm_file[:filename_index]
@@ -40,11 +48,12 @@ def main():
     end_time = time.time()
 
     print("Succeeded in {} seconds!".format(end_time-start_time))
-    print('Simultation Complete!')
-    try:
-        tk.mainloop()
-    except AttributeError:
-        pass
+
+    if config.simulated:
+        try:
+            tk.mainloop()
+        except AttributeError:
+            pass
 
 if __name__ == "__main__":
     main()
