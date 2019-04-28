@@ -1,4 +1,4 @@
-simulated = True
+simulated = False
 algorithm = "./algorithm/main.py"
 
 input_file = "./input/full16x16.txt"
