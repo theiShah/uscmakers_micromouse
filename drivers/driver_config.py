@@ -8,7 +8,7 @@ frontInfraredChannel = 5
 leftInfraredChannel = 6
 rightInfraredChannel = 4
 
-infraredLowerThreshold = 50
+# current max is 580
 leftThreshold = 500
 frontThreshold = 500
 rightThreshold = 500
