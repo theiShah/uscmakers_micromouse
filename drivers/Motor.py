@@ -7,6 +7,8 @@ class Motor():
 
 	def setSpeed(self, speed):
 		
+		speed = max(min(speed, 1.0), -1.0)
+
 		if speed == 0:
 			pass
 		else:

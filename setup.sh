@@ -6,4 +6,4 @@ mkdir env
 python3 -m venv env
 source env/bin/activate
 
-pip3 install RPi.GPIO adafruit-mcp3008 networkx
+sudo pip3 install wheel RPi.GPIO adafruit-mcp3008 networkx matplotlib

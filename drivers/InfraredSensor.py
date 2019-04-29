@@ -1,5 +1,5 @@
 
-import driver_config
+import drivers.driver_config as driver_config
 
 class InfraredSensor():
 

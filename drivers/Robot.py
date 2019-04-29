@@ -5,6 +5,7 @@ from drivers.Motor import Motor
 import RPi.GPIO as GPIO
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_MCP3008
+import time
 
 class Robot:
 
@@ -12,8 +13,8 @@ class Robot:
 
         GPIO.setmode(GPIO.BCM)
 
-        self.leftEncoder = Encoder(driver_config.leftEncoderA, driver_config.leftEncoderB)
-        self.rightEncoder = Encoder(driver_config.rightEncoderA, driver_config.rightEncoderB)
+        #self.leftEncoder = Encoder(driver_config.leftEncoderA, driver_config.leftEncoderB)
+        #self.rightEncoder = Encoder(driver_config.rightEncoderA, driver_config.rightEncoderB)
 
         adc = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(driver_config.SPI_PORT, driver_config.SPI_DEVICE))
 
@@ -21,8 +22,12 @@ class Robot:
         self.leftInfrared = InfraredSensor(driver_config.leftInfraredChannel, adc)
         self.rightInfrared = InfraredSensor(driver_config.rightInfraredChannel, adc)
 
-        self.leftMotor = Motor(driver_config.leftMotorPin)
-        self.rightMotor = Motor(driver_config.rightMotorPin)
+        while True:
+            print("{} {} {}".format(self.frontInfrared.getDistance(), self.leftInfrared.getDistance(), self.rightInfrared.getDistance()))
+            time.sleep(0.1)
+
+        self.leftMotor = Motor(driver_config.leftMotorPinA, driver_config.leftMotorPinB)
+        self.rightMotor = Motor(driver_config.rightMotorPinA, driver_config.rightMotorPinB)
 
     def move_forward(self):
         pass

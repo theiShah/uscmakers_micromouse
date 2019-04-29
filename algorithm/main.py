@@ -1,7 +1,5 @@
 from search import search
 from robot_wrapper import Robot
-import matplotlib.pyplot as plt
-import networkx.drawing as nd
 from dijkstras import dijkstra
 from path_following import follow_path
 import config
