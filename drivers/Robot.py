@@ -30,11 +30,11 @@ class Robot:
         self.leftMotor = Motor(driver_config.leftMotorPinA, driver_config.leftMotorPinB, pigpio)
         self.rightMotor = Motor(driver_config.rightMotorPinA, driver_config.rightMotorPinB, pigpio)
 
-        while True:
-            self.move_forward()
-            self.turn_right()
-            self.turn_left()
-            time.sleep(0.5)
+        #while True:
+        #    self.move_forward()
+        #    self.turn_right()
+        #    self.turn_left()
+        #    time.sleep(0.5)
 
         while True:
             print("{} {} {}".format(self.frontInfrared.getDistance(), self.leftInfrared.getDistance(), self.rightInfrared.getDistance()))
