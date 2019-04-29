@@ -30,11 +30,12 @@ class Robot:
         self.leftMotor = Motor(driver_config.leftMotorPinA, driver_config.leftMotorPinB, pigpio)
         self.rightMotor = Motor(driver_config.rightMotorPinA, driver_config.rightMotorPinB, pigpio)
 
-        #while True:
-        #    self.move_forward()
-        #    self.turn_right()
-        #    self.turn_left()
-        #    time.sleep(0.5)
+        while True:
+            #self.move_forward()
+            self.turn_right()
+            time.sleep(1.0)
+            self.turn_left()
+            time.sleep(2.5)
 
         while True:
             print("{} {} {}".format(self.frontInfrared.getDistance(), self.leftInfrared.getDistance(), self.rightInfrared.getDistance()))
@@ -44,7 +45,7 @@ class Robot:
         # This should be re-written to use PID
         self.leftMotor.setSpeed(0.5)
         self.rightMotor.setSpeed(0.5)
-        time.sleep(0.5)
+        time.sleep(0.68)
         self.leftMotor.setSpeed(0)
         self.rightMotor.setSpeed(0)
 
@@ -52,7 +53,7 @@ class Robot:
         # This should be re-written to use PID
         self.leftMotor.setSpeed(0.5)
         self.rightMotor.setSpeed(-0.5)
-        time.sleep(0.5)
+        time.sleep(0.30)
         self.leftMotor.setSpeed(0)
         self.rightMotor.setSpeed(0)
 
@@ -60,7 +61,7 @@ class Robot:
         # This should be re-written to use PID
         self.leftMotor.setSpeed(-0.5)
         self.rightMotor.setSpeed(0.5)
-        time.sleep(0.5)
+        time.sleep(0.30)
         self.leftMotor.setSpeed(0)
         self.rightMotor.setSpeed(0)
 

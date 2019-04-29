@@ -10,9 +10,9 @@ rightInfraredChannel = 4
 
 # current max is 580
 # Thresholds of 550 give us about 1.5 - 2 inches of distance from the walls
-leftThreshold = 550
-frontThreshold = 550
-rightThreshold = 550
+leftThreshold = 590 #Gives us about 4.5 inches from the side
+frontThreshold = 590 # Gives us about 4 inches from the front 
+rightThreshold = 590 # Gives us about 3.5 inches from the side 	
 
 SPI_PORT = 0
 SPI_DEVICE = 0
