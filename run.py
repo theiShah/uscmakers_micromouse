@@ -1,25 +1,24 @@
-import tkinter as tk
 import time, sys, importlib
 import config
-from sim.Maze import Maze
-from sim.Robot import RobotSim
-from drivers.Robot import Robot
+
 
 def main():
-    global robot
 
     # if len(sys.argv) != 2:
     #     print("This program must have 1 argument!")
     #     sys.exit()
 
-    maze = Maze()
-    maze.process_file(config.input_file)
-
     if config.simulated:
+        import tkinter as tk
+        from sim.Maze import Maze
+        from sim.Robot import RobotSim
+        maze = Maze()
+        maze.process_file(config.input_file)
         gui = tk.Tk()
         canvas = maze.draw_maze(gui)
         robot = RobotSim(maze, gui, canvas)
     else:
+        from drivers.Robot import Robot
         robot = Robot()
 
 
